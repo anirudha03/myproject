@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stops.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Routes</title>
+</head>
+
+<body>
+    
+    <div class="bus-route intro">
+        <select id="pickup" name="pickup" placeholder="pickup bus stand" onchange="calculateFare()" required>
+            <option value="">Select Pickup Location</option>
+                    <option value="Lodha Palava Phase">Lodha Palava Phase</option>
+                    <option value="Katai Naka">Katai Naka</option>
+                    <option value="Runwal">Runwal</option>
+                    <option value="Xperia Mall">Xperia Mall</option>
+                    <option value="UCO Bank">UCO Bank</option>
+                    <option value="Stock holding service ltd">Stock holding service ltd</option>
+                    <option value="MBP Mahape">MBP Mahape</option>
+                    <option value="Gansoli Station">Gansoli Station</option>
+                    <option value="Reliance Corporate">Reliance Corporate</option>
+                    <option value="Airoli">Airoli</option>
+                    <option value="Reliable Tech Park">Reliable Tech Park</option>
+        </select>
+
+        {{!-- <input type="text" name="drop" placeholder="drop bus stand " required><br> --}}
+        <select id="drop" name="drop" placeholder="drop bus stand " onchange="calculateFare()" required>
+            <option value="">Select Drop Location</option>
+                    <option value="Lodha Palava Phase">Lodha Palava Phase</option>
+                    <option value="Katai Naka">Katai Naka</option>
+                    <option value="Runwal">Runwal</option>
+                    <option value="Xperia Mall">Xperia Mall</option>
+                    <option value="UCO Bank">UCO Bank</option>
+                    <option value="Stock holding service ltd">Stock holding service ltd</option>
+                    <option value="MBP Mahape">MBP Mahape</option>
+                    <option value="Gansoli Station">Gansoli Station</option>
+                    <option value="Reliance Corporate">Reliance Corporate</option>
+                    <option value="Airoli">Airoli</option>
+                    <option value="Reliable Tech Park">Reliable Tech Park</option>
+        </select>
+        <input type="text" id="fare" name="fare" readonly>
+        <div class="bus-stop">
+            <span class="stop-name">Lodha Palava Phase</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Katai Naka</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Runwal</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Xperia Mall</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">UCO Bank</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Stock holding service ltd</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">MBP Mahape</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Ghansoli Station</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Reliance Corporate</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Airoli</span>
+            <div class="dashed-line"></div>
+        </div>
+        <div class="bus-stop">
+            <span class="stop-name">Reliable Tech Park</span>
+        </div>
+        
+    </div>
+    <script>
+        // Define your stops and distances here
+        const stops = ["Lodha Palava Phase", "Katai Naka", "Runwal", "Xperia Mall", "UCO Bank", "Bombay Furniture",
+            "Kalyan", "Mahape", "Gansoli Station", "Reliance Corporate", "Airoli", "Reliable Tech Park"];
+        const distances = [4, 3, 2, 2, 1, 1, 4, 7, 4, 4, 2];
+
+        // Function to calculate fare
+        function calculateFare() {
+            const pickupLocation = document.getElementById("pickup").value;
+            const dropLocation = document.getElementById("drop").value;
+            const fareInput = document.getElementById("fare");
+
+            if (pickupLocation && dropLocation) {
+                const pickupIndex = stops.indexOf(pickupLocation);
+                const dropIndex = stops.indexOf(dropLocation);
+
+                if (pickupIndex !== -1 && dropIndex !== -1) {
+                    let totalDistance = 0;
+
+                    if (pickupIndex < dropIndex) {
+                        for (let i = pickupIndex; i < dropIndex; i++) {
+                            totalDistance += distances[i];
+                        }
+                    } else {
+                        for (let i = dropIndex; i < pickupIndex; i++) {
+                            totalDistance += distances[i];
+                        }
+                    }
+
+                    const fare = totalDistance * 2; // Charge per km is 2.00 Rs.
+                    fareInput.value = fare.toFixed(2); // Display fare with two decimal places
+                }
+            } else {
+                fareInput.value = ""; // Reset fare input if pickup or drop is not selected
+            }
+        }
+    </script>
+</body>
+
+</html>

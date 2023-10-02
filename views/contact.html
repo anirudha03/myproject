@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(235, 117, 21, 0.863);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        label,
+        input,
+        textarea,
+        button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #193ea3;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0d308f;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <label for="sendername">Sender Name</label>
+        <input type="text" id="sendername">
+
+        <div class="hide">
+            <label for="to">To (Email)</label>
+            <input type="text" id="to">
+        </div>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject">
+
+        <div class="hide">
+
+            <label for="replyto">Reply To (Email)</label>
+            <input type="text" id="replyto">
+        </div>
+
+        <label for="message">Message</label>
+        <textarea id="message" cols="40" rows="8"></textarea>
+
+        <button onclick="sendMail();">Send</button>
+    </div>
+
+    <script>
+        function sendMail() {
+            (function () {
+                emailjs.init("kJmisX6oWSQziwF-d");
+            })();
+
+            var params = {
+                sendername: document.querySelector("#sendername").value,
+                to: document.querySelector("#to").value,
+                subject: document.querySelector("#subject").value,
+                replyto: document.querySelector("#replyto").value,
+                message: document.querySelector("#message").value,
+            };
+
+            var serviceID = "service_63xx3o6"; // Email Service ID
+            var templateID = "template_w2ldd66"; // Email Template ID
+
+            emailjs.send(serviceID, templateID, params)
+                .then(res => {
+                    alert("message sent successfully!!");
+                })
+                .catch();
+        }
+    </script>
+</body>
+
+</html>

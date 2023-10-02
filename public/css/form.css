@@ -1,0 +1,78 @@
+
+body{
+    background-color: rgb(24, 24, 59);
+}
+body, html {
+    margin: 0;
+    padding: 0;
+}
+.body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;  
+}
+.navbar{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    text-align: center ;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.form{
+    width: 100dvh;
+    background-image: url('/images/home1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(24, 24, 59);;
+    padding: 20px;
+    padding-top: 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form inputs */
+.form input,
+.form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the time inputs */
+.form input[type="time"] {
+    width: 50%; /* Adjust the width as needed */
+}
+.marginO{
+    margin: 0px;
+    color: white;
+}
+.orange{
+    color: rgb(255, 125, 19);
+}
+button{
+    width: 100px;
+    height: 40px;
+    background-color: rgb(3, 101, 158);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 20px;
+}
+option {
+    width: 300px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h2>Enter code</h2>
+    <form action="/entry" method="post">
+        <input type="text" name="pass">
+        <button>GO</button>
+    </form>
+
+    <h2>User Details</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Pickup</th>
+                <th>Drop Location</th>
+                <th>From Time</th>
+                <th>To Time</th>
+                <th>Fare</th>
+                <th>PAss</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{gender}}</td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td>{{pickup}}</td>
+                <td>{{droploc}}</td>
+                <td>{{from_time}}</td>
+                <td>{{to_time}}</td>
+                <td>{{fare}}</td>
+                <td>{{pass}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
